@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: service-ribbon #为服务命名
+  zipkin:
+     enabled: true
+     # zipkkin dashboard的地址：通过真实IP地址访问
+     baseUrl: http://localhost:5555/
+  sleuth:
+    sampler:
+       #  默认值为0.1f，现在为了测试设置100%采集
+      percentage: 1
+     
+server:
+  port: 3333
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:1111/eureka/ #指定服务注册中心位置
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health
+  endpoint:
+    health:
+      show-details: always #默认是never

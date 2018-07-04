@@ -1,0 +1,25 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+server:
+  port: 2222
+  
+spring:
+  application:
+    name: hello-service
+  zipkin:
+     enabled: true
+     # zipkkin dashboard的地址：通过真实IP地址访问
+     baseUrl: http://localhost:5555/
+  sleuth:
+    sampler:
+       #  默认值为0.1f，现在为了测试设置100%采集
+      percentage: 1
+
+management: 
+  endpoints:
+     web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health
+  
